@@ -10,7 +10,7 @@ import './sign-up.styles.scss';
 class SignUp extends React.Component {
     constructor() {
         super();
-        
+
         this.state = {
             displayName: '',
             email: '',
@@ -19,8 +19,8 @@ class SignUp extends React.Component {
         }
 
 
-        this.handleSubmit = this.handleSubmit.bind( this );
-        this.handleChange = this.handleChange.bind( this );
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     async handleSubmit(e) {
@@ -28,38 +28,38 @@ class SignUp extends React.Component {
 
         const { displayName, email, password, confirmPassword } = this.state;
 
-        if ( password !== confirmPassword ) {
-            alert( "Passwords don't match" );
+        if (password !== confirmPassword) {
+            alert("Passwords don't match");
             return;
         }
 
         try {
-            const { user } = await auth.createUserWithEmailAndPassword( email, password );
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
-            await createUserProfileDocument( user, { displayName } );
+            await createUserProfileDocument(user, { displayName });
 
-            this.setState( {
+            this.setState({
                 displayName: '',
                 email: '',
                 password: '',
                 confirmPassword: ''
             })
-        } catch ( err ) {
-            console.log( 'Error: ', err.message );
+        } catch (err) {
+            console.log('Error: ', err.message);
         }
     };
 
-    handleChange( e ) {
+    handleChange(e) {
         const { name, value } = e.target;
 
-        this.setState( {
+        this.setState({
             [name]: value
         })
     }
 
     render() {
         const { displayName, email, password, confirmPassword } = this.state;
-        
+
         return (
             <div className="sign-up">
                 <h2 className="title">I do not have an account</h2>
@@ -88,7 +88,7 @@ class SignUp extends React.Component {
                         onChange={this.handleChange}
                         label="Password"
                         required
-                        />
+                    />
                     <FormInput
                         type='password'
                         name="confirmPassword"
