@@ -1,5 +1,9 @@
 {
     "cSpell.ignoreWords": [
-        "signin"
+        "component",
+        "middlewares",
+        "signin",
+        "unmount",
+        "will"
     ]
 }
