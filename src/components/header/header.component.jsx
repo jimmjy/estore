@@ -10,38 +10,31 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import './header.styles.scss';
 
-const Header = ({ currentUser, hidden, cartItems }) => {
-    const quantityTotal = cartItems.reduce((acc, curr) => {
-        return acc + curr.quantity;
-    }, 0);
-
-    return (
-        <div className="header">
-            <Link to='/'>
-                <Logo className='logo' />
+const Header = ({ currentUser, hidden }) => (
+    <div className="header">
+        <Link to='/'>
+            <Logo className='logo' />
+        </Link>
+        <div className="options">
+            <Link to="/shop" className="option">
+                SHOP
             </Link>
-            <div className="options">
-                <Link to="/shop" className="option">
-                    SHOP
+            <Link className="option" to='/shop'>
+                CONTACT
             </Link>
-                <Link className="option" to='/shop'>
-                    CONTACT
-            </Link>
-                {
-                    currentUser ?
-                        <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div> : <Link className="option" to="/signin">SIGN IN</Link>
-                }
-                <CartIcon total={quantityTotal} />
-            </div>
-            {hidden ? null : <CartDropdown />}
+            {
+                currentUser ?
+                    <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div> : <Link className="option" to="/signin">SIGN IN</Link>
+            }
+            <CartIcon />
         </div>
-    )
-};
+        {hidden ? null : <CartDropdown />}
+    </div>
+);
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden }, cart: { cartItems } }) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
     currentUser,
-    hidden,
-    cartItems
+    hidden
 });
 
 
