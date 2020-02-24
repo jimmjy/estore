@@ -13,11 +13,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         hidden: !state.hidden
       };
+    //this is to add a quantity to our inventory
     case CartActionTypes.ADD_ITEM:
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
       };
+    //this removes cart items from our inventory
     case CartActionTypes.REMOVE_ITEM:
       return {
         ...state,

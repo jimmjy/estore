@@ -12,7 +12,6 @@ import './cart-icon.styles.scss';
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => (
     <div onClick={toggleCartHidden} className="cart-icon">
-        {console.log('item', itemCount)}
         <ShoppingIcon className='shopping-icon' />
         <span className="item-count">{itemCount}</span>
     </div >
