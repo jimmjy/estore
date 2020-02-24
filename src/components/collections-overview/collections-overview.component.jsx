@@ -7,11 +7,20 @@ import CollectionPreview from "../preview-collection/preview-collections.compone
 
 import "./collections-overview.styles.scss";
 
+function findN( collection ) {
+  console.log('keys', Object.keys(collection))
+  for ( let n in collection ) {
+    console.log(collection[n])
+  }
+}
+
 const CollectionsOverview = ({ collections }) => (
   <div className="collections-overview">
-    {collections.map(({ id, ...otherCollectionProps }) => (
+    {console.log('collections', collections)}
+    {/* {collections.map(({ id, ...otherCollectionProps }) => (
       <CollectionPreview key={id} {...otherCollectionProps} />
-    ))}
+    ))} */}
+    {findN(collections)}
   </div>
 );
 
