@@ -1,24 +1,13 @@
 import { createStore, applyMiddleware } from "redux";
+import { persistStore } from "redux-persist";
 import logger from "redux-logger";
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'
 
 import rootReducer from "./root-reducer";
 
 const middlewares = [logger];
 
-const persistConfig = {
-    key: 'root',
-    storage
-};
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
-const persistedReducer = persistReducer( persistConfig, rootReducer );
+const persistor = persistStore(store);
 
-const store = createStore( persistedReducer, applyMiddleware( ...middlewares ) );
-
-const persistor = persistStore( store );
-
-export default {
-    store,
-    persistor
-}
+export default { store, persistor };
