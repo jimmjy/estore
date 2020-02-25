@@ -4,6 +4,7 @@ import './preview-collections.styles.scss';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
+//only is responsible for showing 4. Just literally a how many to display control comp
 const CollectionPreview = ({ title, items }) => (
     <div className="collection-preview">
         <h1 className="title">{title.toUpperCase()}</h1>
