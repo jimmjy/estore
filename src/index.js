@@ -6,7 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import storeObj from "./redux/store";
 
-import App from "./App";
+import App from "./AppTwo";
 
 ReactDOM.render(
   <Provider store={storeObj.store}>
